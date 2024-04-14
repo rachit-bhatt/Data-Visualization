@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Year Persistence Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        
+        h1 {
+            margin-top: 50px;
+            color: #333;
+        }
+        
+        .container {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        form {
+            width: 300px;
+            border: 2px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        label,
+        select,
+        input {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        select {
+            appearance: none;
+            background-image: linear-gradient(45deg, transparent 50%, #ccc 50%);
+            background-position: calc(100% - 10px) center;
+            background-size: 10px 10px;
+            background-repeat: no-repeat;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        #predictionResult {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>First Year Persistence Prediction</h1>
+    <div class="container">
+        <form id="predictionForm">
+            <label for="First_Term_Gpa">First Term Gpa (0.0-4.5):</label>
+            <input type="number" id="First_Term_Gpa" name="First_Term_Gpa" min="0" max="4.5" step="0.1" required>
+
+            <label for="Second_Term_Gpa">Second Term Gpa (0.0-4.5):</label>
+            <input type="number" id="Second_Term_Gpa" name="Second_Term_Gpa" min="0" max="4.5" step="0.1" required>
+
+            <label for="First_Language">First Language:</label>
+            <select id="First_Language" name="First_Language" required>
+                <option value="1">English</option>
+                <option value="2">French 2</option>
+                <option value="3">Other</option>
+            </select>
+
+            <label for="Funding">Funding:</label>
+            <select id="Funding" name="Funding" required>
+                <option value="1">Apprentice_PS</option>
+                <option value="2">GPOG_FT</option>
+                <option value="3">Intl Offshore</option>
+                <option value="4">Intl Regular</option>
+                <option value="5">Intl Transfer</option>
+                <option value="6">Joint Program Ryerson</option>
+                <option value="7">Joint Program UTSC</option>
+                <option value="8">Second Career Program</option>
+                <option value="9">Work Safety Insurance Board</option>
+            </select>
+
+
+            <label for="Fast_Track">Fast Track:</label>
+            <select id="Fast_Track" name="Fast_Track" required>
+                <option value="1">Y</option>
+                <option value="2">N</option>
+            </select>
+
+            <label for="Coop">Coop:</label>
+            <select id="Coop" name="Coop" required>
+                <option value="1">Y</option>
+                <option value="2">N</option>
+            </select>
+
+            <label for="Residency">Residency:</label>
+            <select id="Residency" name="Residency" required>
+                <option value="1">Domestic</option>
+                <option value="2">International</option>
+            </select>
+
+            <label for="Gender">Gender:</label>
+            <select id="Gender" name="Gender" required>
+                <option value="1">Female</option>
+                <option value="2">Male</option>
+                <option value="3">Neutral</option>
+            </select>
+
+            <label for="Prev_Education">Previous Education:</label>
+            <select id="Prev_Education" name="Prev_Education" required>
+                <option value="1">High School</option>
+                <option value="2">Post Secondary</option>
+            </select>
+
+            <label for="Age_Group">Age Group:</label>
+            <select id="Age_Group" name="Age_Group" required>
+                <option value="1">0 to 18</option>
+                <option value="2">19 to 20</option>
+                <option value="3">21 to 25</option>
+                <option value="4">26 to 30</option>
+                <option value="5">31 to 35</option>
+                <option value="6">36 to 40</option>
+                <option value="7">41 to 50</option>
+                <option value="8">51 to 60</option>
+                <option value="9">61 to 65</option>
+                <option value="10">66+</option>
+            </select>
+
+            <label for="Math_Score">Math Score (0.0-50.0):</label>
+            <input type="number" id="Math_Score" name="Math_Score" min="0" max="50" step="0.1" required>
+
+            <label for="English_Grade">English Grade:</label>
+            <select id="English_Grade" name="English_Grade" required>
+                <option value="1">Level-130</option>
+                <option value="2">Level-131</option>
+                <option value="3">Level-140</option>
+                <option value="4">Level-141</option>
+                <option value="5">Level-150</option>
+                <option value="6">Level-151</option>
+                <option value="7">Level-160</option>
+                <option value="8">Level-161</option>
+                <option value="9">Level-170</option>
+                <option value="10">Level-171</option>
+                <option value="11">Level-180</option>
+            </select>
+
+            <button type="submit">Predict</button>
+        </form>
+        <div id="predictionResult"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

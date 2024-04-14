@@ -1,13 +1,4 @@
 absl-py==1.4.0
-aiobotocore @ file:///C:/b/abs_1c1a_vjay2/croot/aiobotocore_1682537737724/work
-aiofiles @ file:///C:/b/abs_9ex6mi6b56/croot/aiofiles_1683773603390/work
-aiohttp @ file:///C:/b/abs_b78zt6vo64/croot/aiohttp_1694181126607/work
-aioitertools @ file:///tmp/build/80754af9/aioitertools_1607109665762/work
-aiosignal @ file:///tmp/build/80754af9/aiosignal_1637843061372/work
-aiosqlite @ file:///C:/b/abs_9djc_0pyi3/croot/aiosqlite_1683773915844/work
-alabaster @ file:///home/ktietz/src/ci/alabaster_1611921544520/work
-anaconda-anon-usage @ file:///C:/b/abs_39_c_gm_wj/croot/anaconda-anon-usage_1695640159371/work
-anaconda-client @ file:///C:/b/abs_80wttmgui4/croot/anaconda-client_1694625288614/work
 anaconda-navigator==1.9.12
 anaconda-project==0.8.3
 annotated-types==0.6.0
