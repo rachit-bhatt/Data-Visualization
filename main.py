@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 app = Flask(__name__)
 
 # Load the pickled model
-with open('neural_network_model11.pkl', 'rb') as file:
+with open('neural_network_model.pkl', 'rb') as file:
     model = pickle.load(file)
 
 # Create StandardScaler instance
@@ -46,4 +46,4 @@ def predict():
     return jsonify({'prediction': prediction.tolist()})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug = True)
