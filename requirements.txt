@@ -2,6 +2,7 @@ anaconda==0.0.1.1
 Flask==2.3.3
 jupyter==1.0.0
 keras==3.2.1
+keras-tuner==1.4.7
 matplotlib==3.7.2
 pickle-utils==0.1.1
 plotly==5.18.0
