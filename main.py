@@ -33,7 +33,7 @@ def predict():
         float(request.form['Math_Score']),
         int(request.form['English_Grade'])
     ]
-
+    
     # Convert features to numpy array and reshape
     features_array = np.array(features).reshape(1, -1)
 
@@ -43,7 +43,15 @@ def predict():
     # Make prediction
     prediction = model.predict(features_scaled)
     
-    return jsonify( { 'prediction' : prediction.tolist() } )
+    y_pred = model.predict(features_scaled)
+ 
+    # Converting the predicted probabilities to binary predictions (0 or 1)
+    y_pred_binary = (y_pred > 0.75).astype(int)
+    
+    # Displaying the first few predictions
+    print("Predictions:", y_pred_binary[:5])
+    
+    return jsonify( { 'prediction' : prediction.tolist(), 'Binary' : y_pred_binary } )
 
 if __name__ == '__main__':
     app.run(debug = True)
