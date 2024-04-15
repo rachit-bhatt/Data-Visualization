@@ -1,5 +1,5 @@
-# Data-Visualization
-Welcome to the Data Visualization repository! 📊🌟
+# Student Dropout Prediction using Neural Network.
+Welcome to the repository! 📊🌟
 
 # Overview
 This repository hosts a collection of data visualization projects, tools, and resources. Whether you’re a data scientist, analyst, or enthusiast, you’ll find valuable content related to visualizing data effectively.
