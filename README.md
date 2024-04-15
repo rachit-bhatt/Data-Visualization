@@ -5,10 +5,10 @@ Welcome to the Data Visualization repository! 📊🌟
 This repository hosts a collection of data visualization projects, tools, and resources. Whether you’re a data scientist, analyst, or enthusiast, you’ll find valuable content related to visualizing data effectively.
 
 # Features
-**Interactive Charts:** Explore interactive visualizations created using popular libraries such as D3.js, Matplotlib, and Plotly.
-**Tutorials:** Step-by-step guides on creating compelling visualizations.
-**Sample Datasets:** Access sample datasets for practicing data visualization techniques.
-**Best Practices:** Learn about design principles, color choices, and storytelling in data visualization.
+- **Interactive Charts:** Explore interactive visualizations created using popular libraries such as D3.js, Matplotlib, and Plotly.
+- **Tutorials:** Step-by-step guides on creating compelling visualizations.
+- **Sample Datasets:** Access sample datasets for practicing data visualization techniques.
+- **Best Practices:** Learn about design principles, color choices, and storytelling in data visualization.
 
 # Contents
 1. **Bar Charts:** Examples of bar charts for comparing categorical data.
