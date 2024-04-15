@@ -19,4 +19,10 @@ jobs:
           python-version: 3.x  # Specify your desired Python version
 
       - name: Install dependencies
-        run: pip install -r requirements.txt || true
+        run: |
+          while read -r module; do
+            pip install "$module" || true
+          done < requirements.txt
+
+      - name: Run main.py
+        run: python main.py
