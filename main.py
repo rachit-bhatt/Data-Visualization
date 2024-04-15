@@ -1,57 +1,62 @@
-from flask import Flask, render_template, request, jsonify
-import pickle
-import numpy as np
-from sklearn.preprocessing import StandardScaler
+import flask
+from pickle import load
+from numpy import array, shape
+import sklearn.preprocessing
 
-app = Flask(__name__)
+#region Global Variables
 
-# Load the pickled model
+UI_FILE = 'index.html'
+THRESHOLD = 0.75
+
+#endregion
+
+app = flask.Flask(__name__)
+
+# Loading our trained model.
 with open('neural_network_model.pkl', 'rb') as file:
-    model = pickle.load(file)
+    model = load(file)
 
 # Create StandardScaler instance
-scaler = StandardScaler()
+scaler = sklearn.preprocessing.StandardScaler()
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return flask.render_template(UI_FILE)
 
-@app.route('/predict', methods = ['POST'])
+@app.route('/results', methods = ['POST'])
 def predict():
-    # Extract features from the form
+
+    # Fetching the features given by the user.
     features = [
-        float(request.form['First_Term_Gpa']),
-        float(request.form['Second_Term_Gpa']),
-        int(request.form['First_Language']),
-        int(request.form['Funding']),
-        int(request.form['Fast_Track']),
-        int(request.form['Coop']),
-        int(request.form['Residency']),
-        int(request.form['Gender']),
-        int(request.form['Prev_Education']),
-        int(request.form['Age_Group']),
-        float(request.form['Math_Score']),
-        int(request.form['English_Grade'])
+        float(flask.request.form['First-Term-GPA']),
+        float(flask.request.form['Second-Term-GPA']),
+        int(flask.request.form['First-Language']),
+        int(flask.request.form['Funding']),
+        int(flask.request.form['Fast Track']),
+        int(flask.request.form['Co-Op']),
+        int(flask.request.form['Residency']),
+        int(flask.request.form['Gender']),
+        int(flask.request.form['Prev Education']),
+        int(flask.request.form['Age Group']),
+        float(flask.request.form['Math Score']),
+        int(flask.request.form['English Grade'])
     ]
     
-    # Convert features to numpy array and reshape
-    features_array = np.array(features).reshape(1, -1)
+    # Reshaping the array as a part of data pre-processing for predicting the results.
+    features_array = array(features).reshape(1, -1)
 
-    # Apply StandardScaler
-    features_scaled = scaler.fit_transform(features_array)
-
-    # Make prediction
-    prediction = model.predict(features_scaled)
+    # Scaling the features between the range of 0 and 1.
+    # features_scaled = scaler.fit_transform(X = features_array)
     
-    y_pred = model.predict(features_scaled)
+    # Giving model a result to generate based on the given data by the user.
+    prediction = model.predict(features_array)
+    print(prediction)
  
-    # Converting the predicted probabilities to binary predictions (0 or 1)
-    y_pred_binary = (y_pred > 0.75).astype(int)
+    # Generating the results based on the configured threshold.
+    result = (prediction > THRESHOLD).astype(int)
     
-    # Displaying the first few predictions
-    print("Predictions:", y_pred_binary[:5])
-    
-    return jsonify( { 'prediction' : prediction.tolist(), 'Binary' : y_pred_binary } )
+    # Sending the predicted results to the UI.
+    return flask.render_template(UI_FILE, result = result[0][0])
 
 if __name__ == '__main__':
     app.run(debug = True)
