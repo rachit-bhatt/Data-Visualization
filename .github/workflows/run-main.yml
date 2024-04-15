@@ -21,9 +21,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt  # Adjust if needed
 
-      - name: Run main.py
-        run: python main.py
-
       # Add a conditional step to check if the module is installed
       - name: Check if module exists
         run: pip show <module-name>
@@ -34,3 +31,6 @@ jobs:
       - name: Install module
         run: pip install <module-name>
         if: steps.check-module.outcome == 'failure'
+
+      - name: Run main.py
+        run: python main.py
