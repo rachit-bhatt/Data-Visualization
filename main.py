@@ -3,8 +3,11 @@
 # Flask Methods.
 import flask
 
+# Loading Model using Keras.
+from keras.models import load_model
+
 # Loading the Pickle Model.
-from pickle import load
+# from pickle import load
 
 # Data Operations.
 from numpy import array
@@ -25,8 +28,9 @@ THRESHOLD = 0.75
 app = flask.Flask(__name__)
 
 # Loading our trained model.
-with open('neural_network_model.pkl', 'rb') as file:
-    model = load(file)
+# with open('neural_network_model.pkl', 'rb') as file:
+#     model = load(file)
+model = load_model('neural_network_model.keras')
 
 # When rendering the home page.
 @app.route('/')
