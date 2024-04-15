@@ -1,4 +1,4 @@
-name: Run main.py
+name: Install Python Dependencies
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main  # Adjust this to your default branch name
 
 jobs:
-  run-main:
+  install-modules:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,18 +19,4 @@ jobs:
           python-version: 3.x  # Specify your desired Python version
 
       - name: Install dependencies
-        run: pip install -r requirements.txt  # Adjust if needed
-
-      # Add a conditional step to check if the module is installed
-      - name: Check if module exists
-        run: pip show <module-name>
-        continue-on-error: true
-        id: check-module
-
-      # Only run the next step if the module is not installed
-      - name: Install module
-        run: pip install <module-name>
-        if: steps.check-module.outcome == 'failure'
-
-      - name: Run main.py
-        run: python main.py
+        run: pip install -r requirements.txt || true
