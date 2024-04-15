@@ -1,28 +1,39 @@
+#region Import Libraries
+
+# Flask Methods.
 import flask
+
+# Loading the Pickle Model.
 from pickle import load
-from numpy import array, shape
-import sklearn.preprocessing
+
+# Data Operations.
+from numpy import array
+
+#endregion
 
 #region Global Variables
 
+# UI file name to render.
 UI_FILE = 'index.html'
+
+# Prediction Threshold.
 THRESHOLD = 0.75
 
 #endregion
 
+# Loading the Flask instance.
 app = flask.Flask(__name__)
 
 # Loading our trained model.
 with open('neural_network_model.pkl', 'rb') as file:
     model = load(file)
 
-# Create StandardScaler instance
-scaler = sklearn.preprocessing.StandardScaler()
-
+# When rendering the home page.
 @app.route('/')
 def home():
     return flask.render_template(UI_FILE)
 
+# Result
 @app.route('/results', methods = ['POST'])
 def predict():
 
@@ -45,18 +56,17 @@ def predict():
     # Reshaping the array as a part of data pre-processing for predicting the results.
     features_array = array(features).reshape(1, -1)
 
-    # Scaling the features between the range of 0 and 1.
-    # features_scaled = scaler.fit_transform(X = features_array)
-    
     # Giving model a result to generate based on the given data by the user.
     prediction = model.predict(features_array)
-    print(prediction)
- 
+
     # Generating the results based on the configured threshold.
     result = (prediction > THRESHOLD).astype(int)
     
     # Sending the predicted results to the UI.
     return flask.render_template(UI_FILE, result = result[0][0])
 
+# Executing the code when this file is executed.
 if __name__ == '__main__':
-    app.run(debug = True)
+    
+    # Runs the code in without debugging.
+    app.run(debug = False)
