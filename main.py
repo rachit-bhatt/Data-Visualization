@@ -4,7 +4,7 @@
 import flask
 
 # Loading the Pickle Model.
-from pickle import load
+import pickle
 
 # Data Operations.
 from numpy import array
@@ -26,7 +26,7 @@ app = flask.Flask(__name__)
 
 # Loading our trained model.
 with open('neural_network_model.pkl', 'rb') as file:
-    model = load(file)
+    model = pickle.load(file)
 
 # When rendering the home page.
 @app.route('/')
